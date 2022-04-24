@@ -15,6 +15,11 @@ classdef TestProcessVecs < matlab.unittest.TestCase
       out = processVec(in);
       testCase.verifyEqual(out, false);
     end
+    function failVectorWeird(testCase)
+      in = [1, 2, 3, 4, 5, "134324", true];
+      out = processVec(in);
+      testCase.verifyEqual(out, false);
+    end
   end
 end
 

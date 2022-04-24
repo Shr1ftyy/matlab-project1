@@ -1,6 +1,7 @@
 function loadedVecs = loadVecs(nBodies)
   assert(isnumeric(nBodies));
-  assert(length(nBodies) == 1); % make
+  assert(length(nBodies) == 1);
+  % the above makes sure nBodies is just a number
   loadedVecs = [];
   i = 1;
   while i<=nBodies 
