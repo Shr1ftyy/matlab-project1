@@ -8,5 +8,5 @@ NBodies = input("How many bodies would you like to run a simulation of (2 or mor
 assert(NBodies >= 2);
 initialVectors = loadVecs(NBodies);
 
-computedPositions = 
+% computedPositions = 
 

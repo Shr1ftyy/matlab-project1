@@ -12,9 +12,8 @@ function newPositionMatrix = posAtTime(inMatrix, timePassed)
   currentPositionMatrix = inMatrix(1:end, 1:3); %
   massMatrix = transpose(inMatrix(1:end, 4));
   radiiSquared = computeRadiiSquaredMatrix(currentPositionMatrix);
-%   radUnitVecs = computeUnitVecMatrix(currentPositionMatrix);
+  radUnitVecs = computeUnitVecMatrix(currentPositionMatrix);
 %   forceVecs = computeForces(currentPositionMatrix, massMatrix, radiiSquared, radUnitVecs);
 %   newPositionMatrix = forceVecs  * power(massMatrix, -1) ; 
-  
 end
   
