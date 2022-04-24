@@ -1,0 +1,2 @@
+main.m - main script to run
+runTests.m - loads all test cases in "./tests" as a test suite and runs them

@@ -1,11 +1,20 @@
-goodCases = [
-  [1, 2, 3, 4];
-  [2, 5, 7, 2];
-  [5, 6, 2, 1]
-];
+classdef TestProcessVecs < matlab.unittest.TestCase
+  methods(Test)
+    function passSimple(testCase)
+      in = [1, 2, 3, 4];
+      out = processVec(in);
+      testCase.verifyEqual(in, out);
+    end
+    function failVectorTooBig(testCase)
+      in = [1, 2, 3, 4, 5];
+      out = processVec(in);
+      testCase.verifyEqual(out, false);
+    end
+    function failVectorIncorrectInput(testCase)
+      in = ["1", 2, 3 "5"];
+      out = processVec(in);
+      testCase.verifyEqual(out, false);
+    end
+  end
+end
 
-badCases = [
-  [1, 2, 3];
-  [2, "5", 7, 2];
-  [5, 6, "slsdkJKWLJR", "sdf"];
-];
