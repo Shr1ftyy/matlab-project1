@@ -29,6 +29,5 @@ function netForceOnPs = computeForces(massVector, radiiSquared, radUnitVecs)
     end
     netForceOnPs = [netForceOnPs; netForceOnP_i];
   end
-  disp(netForceOnPs);
 end
 
