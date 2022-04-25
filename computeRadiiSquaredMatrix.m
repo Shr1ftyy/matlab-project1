@@ -5,11 +5,9 @@ function radiiSquared = computeRadiiSquaredMatrix(posMatrix)
   for i=1:nParticles
     displacementsParticleI = [];
     for j=1:nParticles
-      if i~=j
-        displacement = posMatrix(i, 1:end) - posMatrix(j, 1:end);
-        dispMag = vecnorm(displacement);
-        displacementsParticleI = [displacementsParticleI, dispMag];
-      end
+      displacement = posMatrix(i, 1:end) - posMatrix(j, 1:end);
+      dispMag = vecnorm(displacement);
+      displacementsParticleI = [displacementsParticleI, dispMag];
 %     disp(displacementsParticleI);
     end
 

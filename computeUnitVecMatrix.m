@@ -1,14 +1,23 @@
 function unitVecs = computeUnitVecMatrix(posMatrix)
-% Computes the unit vector pointing from each particle to the other, and stores them into a matrix
-  unitVecs = [];
   dims = size(posMatrix);
-  rows = dims(1);
-    for index=2:rows
-      disp(index);
-      displacementVec = posMatrix(index, 1:3) - posMatrix(index-1, 1:3);
-      displacementVecMag = vecnorm(displacementVec);
-      unitVec = displacementVec * (1/displacementVecMag);
-      unitVecs = [unitVecs; unitVec];
+  nParticles = dims(1);
+  unitVecs = [];
+  for i=1:nParticles
+    particleUnitVecs = [];
+    for j=1:nParticles
+      displacement = posMatrix(i, 1:end) - posMatrix(j, 1:end);
+      dispMag = vecnorm(displacement); % magnitude of vector
+      unitVec = displacement/dispMag;
+      dimUnitVec = size(unitVec);
+      if isnan(unitVec)
+        particleUnitVecs = cat(3,particleUnitVecs, zeros(dimUnitVec));
+      else
+        particleUnitVecs = cat(3,particleUnitVecs, unitVec);
+      end
+%     disp(displacementsParticleI);
     end
-end
 
+    % outputs tensor containing 
+    unitVecs = cat(4, unitVecs, particleUnitVecs);
+  end
+end
