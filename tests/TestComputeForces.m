@@ -18,17 +18,13 @@ classdef TestComputeForces < matlab.unittest.TestCase
       radUnitVecs(:,:,3,3) = [0     0     0];
 
       raw = computeForces(masses, radiiSqrd, radUnitVecs);
-      out = round(raw, 7, "decimals");
+      out = round(raw, 4, "decimals");
+      expected = [0.0027    0.0027    0.0028;
+                  -0.0022   -0.0021   -0.0019;
+                  -0.0005   -0.0007   -0.0009];
+      
+      testCase.verifyEqual(out, expected);
 
-      testCase.verifyEqual(out(:,:,1,1) , [NaN   NaN   NaN]);
-      testCase.verifyEqual(out(:,:,2,1) , [-0.0026   -0.0026   -0.0026]);
-      testCase.verifyEqual(out(:,:,3,1) , 1.0e-03 * [-0.1133   -0.1510   -0.1888]);
-      testCase.verifyEqual(out(:,:,1,2) , [0.0026    0.0026    0.0026]);
-      testCase.verifyEqual(out(:,:,2,2) , [NaN   NaN   NaN]);
-      testCase.verifyEqual(out(:,:,3,2) , 1.0e-03 * [-0.3419   -0.5128   -0.6838]);
-      testCase.verifyEqual(out(:,:,1,3) , 1.0e-03 * [0.1133    0.1510    0.1888 ]);
-      testCase.verifyEqual(out(:,:,2,3) , 1.0e-03 * [0.3419    0.5128    0.6838 ]);
-      testCase.verifyEqual(out(:,:,3,3) , [NaN   NaN   NaN]);
     end
   end
 end

@@ -1,9 +1,10 @@
-function forceVecs = computeForces(massVector, radiiSquared, radUnitVecs)
+function netForceOnPs = computeForces(massVector, radiiSquared, radUnitVecs)
 %COMPUTEFORCES Computes forces given position, mass, distance between point particles and unit vectors.
   dimPosMat = size(massVector);
   numParticles = dimPosMat(1); % number of particles
   G =  6.67384e-11; % gravitational constant
   forceVecs = [];
+  netForceOnPs = [];
   invRadiiSquared = power(radiiSquared, -1);
   for i=1:numParticles
     forcesOnParticleIByAllJs = [];
@@ -14,6 +15,20 @@ function forceVecs = computeForces(massVector, radiiSquared, radUnitVecs)
     end
     forceVecs = cat(4, forceVecs, forcesOnParticleIByAllJs);
   end
-  
+  forceDims = size(forceVecs);
+  spatialDims = forceDims(2);
+
+  for i=1:numParticles
+    netForceOnP_i = zeros(1, spatialDims);
+    for j=1:numParticles
+      force = forceVecs(:,:,i,j);
+%       disp(force)
+      if ~(isnan(force))
+        netForceOnP_i = netForceOnP_i + force;
+      end
+    end
+    netForceOnPs = [netForceOnPs; netForceOnP_i];
+  end
+  disp(netForceOnPs);
 end
 

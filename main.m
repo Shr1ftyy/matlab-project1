@@ -18,8 +18,6 @@ t = 0; % intiial time in seconds
 % the simulation inaccurate compared to emprical results anyway
 
 deltaPos = updateSimGivenLast(posMat, velocityMat, accelMat, masses); 
-disp(deltaPos)
-
 % while true
 %   deltaPos = updateSimGivenLast(posMat, velocityMat, accelMat, masses, dt);
 %   posMat = posMat + deltaPos;
