@@ -9,8 +9,12 @@ function newPositionMatrix = updateSimGivenLast(posMat, vMat, aMat, mMat)
   % in vectorized form to compute displacements
   % F = G * dot((dot(m_1, m_2)/r^2) r^2)
   radiiSquared = computeRadiiSquaredMatrix(posMat);
+  disp(radiiSquared);
   radUnitVecs = computeUnitVecMatrix(posMat);
-  forceVecs = computeForces(massMatrix, radiiSquared, radUnitVecs);
+  disp(radUnitVecs);
+  forceVecs = computeForces(mMat, radiiSquared, radUnitVecs);
+  newPositionMatrix = forceVecs;
+  disp(newPositionMatrix);
 %   newPositionMatrix = forceVecs  * power(massMatrix, -1) ; 
 end
   
