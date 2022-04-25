@@ -8,7 +8,6 @@ function outVec = processVec(inVec)
     assert(dimensions(2) == 4);
     outVec = inVec;
   catch b
-    warning("Input vector must be a row vector of size 4, try again");
     outVec = false;
   end
 end

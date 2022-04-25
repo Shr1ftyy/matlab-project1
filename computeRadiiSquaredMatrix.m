@@ -1,13 +1,24 @@
 function radiiSquared = computeRadiiSquaredMatrix(posMatrix)
-  displacementBetweens = [];
   dims = size(posMatrix);
-  rows = dims(1);
-    for index=2:rows
-      disp(index);
-      displacementVec = posMatrix(index, 1:3) - posMatrix(index-1, 1:3);
-      displacementVecMag = vecnorm(displacementVec);
-      displacementBetweens = [displacementBetweens; displacementVecMag];
+  nParticles = dims(1);
+  distanceBetweens = [];
+  for i=1:nParticles
+    displacementsParticleI = [];
+    for j=1:nParticles
+      if i~=j
+        displacement = posMatrix(i, 1:end) - posMatrix(j, 1:end);
+        dispMag = vecnorm(displacement);
+        displacementsParticleI = [displacementsParticleI, dispMag];
+      end
+%     disp(displacementsParticleI);
     end
-  disp(displacementBetweens);
-  radiiSquared = displacementBetweens; % raises every element to the power of 2
+
+    if (isempty(distanceBetweens))
+      distanceBetweens = displacementsParticleI;
+    else
+      distanceBetweens = [distanceBetweens; displacementsParticleI];
+    end
+  end
+
+  radiiSquared = power(distanceBetweens, 2); % element wise squaring
 end
