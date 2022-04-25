@@ -14,13 +14,12 @@ posMat = loadedVecs(1:end, 1:3);
 velocityMat = zeros(size(posMat));
 accelMat = zeros(size(posMat));
 t = 0; % intiial time in seconds 
-% dt=1, this cannot be changed (this is primarly done to simplify calculations, and changing it makes
-% the simulation inaccurate compared to emprical results anyway
+dt=1; % change in t per timestep
 
-deltaPos = updateSimGivenLast(posMat, velocityMat, accelMat, masses); 
-% while true
-%   deltaPos = updateSimGivenLast(posMat, velocityMat, accelMat, masses, dt);
-%   posMat = posMat + deltaPos;
-% 
-%    
+while true
+  init = posMat;
+  [posMat, velocityMat, accelMat] = updateSimGivenLast(posMat, velocityMat, accelMat, masses, dt); 
+  disp(posMat);
+end
+
 

@@ -1,4 +1,4 @@
-function newPositionMatrix = updateSimGivenLast(posMat, vMat, aMat, mMat)
+function [newPos, newVel, newAccel] = updateSimGivenLast(posMat, vMat, aMat, mMat, dt)
   % Inputs:
   % posMat - n x 3 matrix, with each row containing 3d pos
   % vMat - n x 3 matrix, with each row containing 3d velocity
@@ -11,6 +11,9 @@ function newPositionMatrix = updateSimGivenLast(posMat, vMat, aMat, mMat)
   radiiSquared = computeRadiiSquaredMatrix(posMat);
   radUnitVecs = computeUnitVecMatrix(posMat);
   netForceOnEachParticle = computeForces(mMat, radiiSquared, radUnitVecs);
+  newAccel = netForceOnEachParticle./mMat;
+  newVel = vMat + newAccel*dt;
+  newPos = posMat + newVel*dt;
 %   newPositionMatrix = forceVecs  * power(massMatrix, -1) ; 
 end
   
