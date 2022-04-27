@@ -23,7 +23,7 @@ function netForceOnPs = computeForces(massVector, radiiSquared, radUnitVecs)
   spatialDims = forceDims(2);
 
   % calculates net force on each particle by every other particle, and
-  % organizes them into the multi dimensional array "netForceOnPs"
+  % organizes them into the multi dimensional array netForceOnPs
   for i=1:numParticles
     netForceOnP_i = zeros(1, spatialDims);
     for j=1:numParticles

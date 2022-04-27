@@ -30,20 +30,6 @@ classdef TestComputeRadiiSquaredMatrix < matlab.unittest.TestCase
 
       testCase.verifyEqual(out,expected);
     end
-%     function passUncertain(testCase)
-%       in = [1,     2,     3;
-%             4,     5,     6;
-%             7,     8,     9
-%             22,    33,  220];
-% 
-%       out = round(computeRadiiSquaredMatrix(in), 4);
-%       expected = 1.0e+04 * [    0.0027,    0.0108,    4.8491;
-%                                 0.0027,    0.0027,    4.6904;
-%                                 0.0108,    0.0027,    4.5371;
-%                                 4.8491,    4.6904,    4.5371];
-% 
-%       testCase.verifyEqual(out,expected);
-%     end
   end
 end
 
