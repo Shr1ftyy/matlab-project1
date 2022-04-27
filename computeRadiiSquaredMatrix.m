@@ -18,5 +18,5 @@ function radiiSquared = computeRadiiSquaredMatrix(posMatrix)
     end
   end
 
-  radiiSquared = power(distanceBetweens, 2); % element wise squaring
+  radiiSquared = distanceBetweens.^2; % element wise squaring
 end

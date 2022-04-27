@@ -8,6 +8,7 @@ function [newPos, newVel, newAccel] = updateSimGivenLast(posMat, vMat, aMat, mMa
   % timePassed by following the using the force vectors of all particles 
   % in vectorized form to compute displacements
   % F = G * dot((dot(m_1, m_2)/r^2) r^2)
+  % Returns: updated positions, velocities, and accelerations of all masses
   radiiSquared = computeRadiiSquaredMatrix(posMat);
   radUnitVecs = computeUnitVecMatrix(posMat);
   netForceOnEachParticle = computeForces(mMat, radiiSquared, radUnitVecs);
