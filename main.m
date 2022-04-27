@@ -9,6 +9,7 @@ if choice == 1
   pos = rand(amount, 3)*1e10;
   masses = rand(amount, 1)*1e24;
   vel = rand(amount, 3)*1e3;
+  loadedVecs = [pos masses vel];
 elseif choice == 2
   fprintf("load initial params from .csv file, with each row being [x, y, z, mass, v_x, v_y, v_z]\n");
   fileName = input("Enter Filename: ", 's');
